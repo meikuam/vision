@@ -278,6 +278,7 @@ inline void add(T* address, const T& val) {
   *address += val;
 }
 
+#ifndef MOBILE
 template <typename T>
 void ROIAlignBackward(
     const int nthreads,
@@ -385,6 +386,7 @@ void ROIAlignBackward(
     } // iy
   } // for
 } // ROIAlignBackward
+#endif
 
 at::Tensor ROIAlign_forward_cpu(
     const at::Tensor& input,
@@ -436,6 +438,7 @@ at::Tensor ROIAlign_forward_cpu(
   return output;
 }
 
+#ifndef MOBILE
 at::Tensor ROIAlign_backward_cpu(
     const at::Tensor& grad,
     const at::Tensor& rois,
@@ -493,3 +496,4 @@ at::Tensor ROIAlign_backward_cpu(
       });
   return grad_input;
 }
+#endif

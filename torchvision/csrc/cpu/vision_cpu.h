@@ -1,5 +1,8 @@
 #pragma once
+#ifndef MOBILE
 #include <torch/extension.h>
+#endif
+#include <torch/all.h>
 #include "../macros.h"
 
 VISION_API std::tuple<at::Tensor, at::Tensor> ROIPool_forward_cpu(

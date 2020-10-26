@@ -21,6 +21,7 @@ at::Tensor nms(
   return op.call(dets, scores, iou_threshold);
 }
 
+#ifndef MOBILE
 #if defined(WITH_CUDA) || defined(WITH_HIP)
 at::Tensor nms_autocast(
     const at::Tensor& dets,
@@ -32,4 +33,5 @@ at::Tensor nms_autocast(
       at::autocast::cached_cast(at::kFloat, scores),
       iou_threshold);
 }
+#endif
 #endif

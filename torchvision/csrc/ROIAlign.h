@@ -38,6 +38,7 @@ at::Tensor roi_align(
       aligned);
 }
 
+#ifndef MOBILE
 #if defined(WITH_CUDA) || defined(WITH_HIP)
 at::Tensor ROIAlign_autocast(
     const at::Tensor& input,
@@ -232,3 +233,4 @@ at::Tensor ROIAlign_backward_autograd(
       sampling_ratio,
       aligned)[0];
 }
+#endif
